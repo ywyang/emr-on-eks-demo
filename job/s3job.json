@@ -1,0 +1,32 @@
+{
+  "name": "s3job",
+  "virtualClusterId": "q628xifydaxdqu9745mgjjyh1",
+  "executionRoleArn": "arn:aws-cn:iam::856654148726:role/emr_eks_runjob_role",
+  "releaseLabel": "emr-6.2.0-latest",
+  "jobDriver": {
+    "sparkSubmitJobDriver": {
+      "entryPoint": "s3://emr-on-eks-camp/bin/s3.py",
+       "sparkSubmitParameters": "--jars s3://emr-on-eks-camp/bin/mysql-connector-java-5.1.47-bin.jar  --conf spark.executor.instances=1 --conf spark.executor.memory=1G --conf spark.executor.cores=1 --conf spark.driver.cores=1 "
+    }
+  },
+  "configurationOverrides": {
+    "applicationConfiguration": [
+      {
+        "classification": "spark-defaults",
+        "properties": {
+          "spark.driver.memory":"1G"
+         }
+      }
+    ],
+    "monitoringConfiguration": {
+      "persistentAppUI": "ENABLED",
+      "cloudWatchMonitoringConfiguration": {
+        "logGroupName": "/emr-on-eks",
+        "logStreamNamePrefix": "s3"
+      },
+      "s3MonitoringConfiguration": {
+        "logUri": "s3://emr-on-eks-camp/logs/"
+      }
+    }
+  }
+}
