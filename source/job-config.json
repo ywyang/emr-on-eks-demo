@@ -1,12 +1,12 @@
 {
-  "name": "s3job",
-  "virtualClusterId": "q628xifydaxdqu9745mgjjyh1",
-  "executionRoleArn": "arn:aws-cn:iam::856654148726:role/emr_eks_runjob_role",
+  "name": "emrjobdemo",
+  "virtualClusterId": "<your virtualCluster ID>",
+  "executionRoleArn": "arn:aws-cn:iam::<your account id>:role/emr_eks_runjob_role",
   "releaseLabel": "emr-6.2.0-latest",
   "jobDriver": {
     "sparkSubmitJobDriver": {
-      "entryPoint": "s3://emr-on-eks-camp/bin/s3.py",
-       "sparkSubmitParameters": "--jars s3://emr-on-eks-camp/bin/mysql-connector-java-5.1.47-bin.jar  --conf spark.executor.instances=1 --conf spark.executor.memory=1G --conf spark.executor.cores=1 --conf spark.driver.cores=1 "
+      "entryPoint": "s3://<your s3 bucket name>/source/spark-job.py",
+       "sparkSubmitParameters": "--jars s3://<your s3 bucket name>/source/mysql-connector-java-5.1.47-bin.jar  --conf spark.executor.instances=1 --conf spark.executor.memory=1G --conf spark.executor.cores=1 --conf spark.driver.cores=1 "
     }
   },
   "configurationOverrides": {
@@ -25,7 +25,7 @@
         "logStreamNamePrefix": "s3"
       },
       "s3MonitoringConfiguration": {
-        "logUri": "s3://emr-on-eks-camp/logs/"
+        "logUri": "s3://<your s3 bucket name>/logs/"
       }
     }
   }
