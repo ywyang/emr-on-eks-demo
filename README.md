@@ -9,9 +9,9 @@
 文件清单
 
 
-| 文件名称 | 用途 |  |
-| -- | ---: | :--: |
-| [ny-taxi.csv](https://github.com/ywyang/emr-on-eks-demo/blob/main/input/ny-taxi.csv) | csv原始数据 |     |
-| [spark-job.py](https://github.com/ywyang/emr-on-eks-demo/blob/main/source/spark-job.py) | 任务执行脚本（PySpark） |     |
-| [mysql-connector-java-5.1.47-bin.jar](https://github.com/ywyang/emr-on-eks-demo/blob/main/source/mysql-connector-java-5.1.47-bin.jar) | MySQL  JDBC连接jar包 |     |
-| [job-config.json](https://github.com/ywyang/emr-on-eks-demo/blob/main/source/job-config.json) | 任务定义文件 | |
+| 文件名称 | 用途 |
+| -- | :--- |
+| [ny-taxi.csv](https://github.com/ywyang/emr-on-eks-demo/blob/main/input/ny-taxi.csv) | csv原始数据 |
+| [spark-job.py](https://github.com/ywyang/emr-on-eks-demo/blob/main/source/spark-job.py) | 任务执行脚本（PySpark） |
+| [mysql-connector-java-5.1.47-bin.jar](https://github.com/ywyang/emr-on-eks-demo/blob/main/source/mysql-connector-java-5.1.47-bin.jar) | MySQL  JDBC连接jar包 |
+| [job-config.json](https://github.com/ywyang/emr-on-eks-demo/blob/main/source/job-config.json) | 任务定义文件 |
