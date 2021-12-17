@@ -1,16 +1,7 @@
 ## 安装配置AWS CLI
 
-\#卸载当前版本aws cli
 
-which aws
-
-sudo rm /usr/bin/aws
-
-sudo rm /usr/bin/aws_completer
-
-sudo rm -rf /usr/bin/v2 
-
-\#安装最新版cli
+#安装最新版cli
 
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
