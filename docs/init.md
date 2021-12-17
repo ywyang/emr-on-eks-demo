@@ -127,3 +127,4 @@ aws iam create-role --role-name emr_eks_runjob_role --assume-role-policy-documen
 myaccount_id=`aws sts get-caller-identity --query Account --output text`
 
 aws iam attach-role-policy --policy-arn arn:aws:iam::$myaccount_id:policy/emroneks-policy --role-name emr_eks_runjob_role
+
