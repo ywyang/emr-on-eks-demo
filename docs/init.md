@@ -66,3 +66,64 @@ eksctl create cluster \
 ## 配置EKS集群
 
 eksctl utils associate-iam-oidc-provider --cluster emroneks --approve
+
+
+
+## 创建策略
+
+emronekspolicy.json
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams",
+                "logs:CreateLogGroup",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws-cn:logs:*:*:*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+```
+aws iam create-policy --policy-name emroneks-policy --policy-document file://emronekspolicy.json
+```
+
+role-trust-policy.json
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "emr-containers.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+aws iam create-role --role-name emr_eks_runjob_role --assume-role-policy-document file://role-trust-policy.json
+
+myaccount_id=`aws sts get-caller-identity --query Account --output text`
+
+aws iam attach-role-policy --policy-arn arn:aws:iam::$myaccount_id:policy/emroneks-policy --role-name emr_eks_runjob_role
